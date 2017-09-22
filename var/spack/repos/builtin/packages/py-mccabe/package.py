@@ -45,5 +45,9 @@ class PyMccabe(PythonPackage):
 
     depends_on('py-setuptools', type='build')
 
+    # Cherry pick upstream commit that removes pytest-runner as a build dep
+    patch('https://github.com/PyCQA/mccabe/commit/c1c5b0e073a335e369042b69e651965eeaa51cd1.patch',
+          md5='a06866a9e3032aead7088f538bec3712', when='@:0.6.1')
+
     # TODO: Add test dependencies
     # depends_on('py-pytest', type='test')
