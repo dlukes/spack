@@ -148,3 +148,8 @@ uvedenou cestou (konkrétní verze balíčků lze zadat ručně, např. místo j
 balíčku `python` zadáte specifičtější identifikátor `python@3.6.2`). V praxi mi
 to zatím nevadilo, nicméně chytřejší řešení je snad na cestě:
 <https://github.com/LLNL/spack/pull/4585>
+
+## Jak přidat novou verzi balíčku?
+
+Většinou stačí zjistit hash pomocí `./bin/spack md5 <release_url>` a pak verzi
+přidat pomocí `./bin/spack edit <jméno_balíčku>`.
