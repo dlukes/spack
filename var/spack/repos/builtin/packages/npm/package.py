@@ -33,6 +33,7 @@ class Npm(AutotoolsPackage):
     # base http://www.npmjs.com/
     url      = "https://registry.npmjs.org/npm/-/npm-3.10.5.tgz"
 
+    version('5.4.2', '85432f1cb99687a5ea78d7431c3fc383')
     version('3.10.9', 'ec1eb22b466ce87cdd0b90182acce07f')
     version('3.10.5', '46002413f4a71de9b0da5b506bf1d992')
 
