@@ -38,6 +38,7 @@ class Postgresql(AutotoolsPackage):
     version('10.2', 'e97c3cc72bdf661441f29069299b260a')
     version('9.3.4', 'd0a41f54c377b2d2fab4a003b0dac762')
     version('9.5.3', '3f0c388566c688c82b01a0edf1e6b7a0')
+    version('9.6.5', '7a387fa6a75c84f25e7250007980679e')
 
     depends_on('openssl')
     depends_on('readline')
