@@ -34,6 +34,7 @@ class Ruby(AutotoolsPackage):
     list_url = "http://cache.ruby-lang.org/pub/ruby/"
     list_depth = 1
 
+    version('2.4.2', 'fe106eed9738c4e03813ab904f8d891c')
     version('2.2.0', 'cd03b28fd0b555970f5c4fd481700852')
 
     variant('openssl', default=True, description="Enable OpenSSL support")
