@@ -132,7 +132,7 @@ symlink...
 print("Hello, world!")
 ```
 
-... nebo toto omezení obejdeme pomocí programu `./bin/sbang`:
+... nebo toto omezení obejdeme pomocí skriptu `./bin/sbang`:
 
 ```python
 #!/cnk/common/tools/spack/bin/sbang
