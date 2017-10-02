@@ -1,0 +1,5 @@
+packages:
+  all:
+    compiler: [gcc@6.4.0]
+  # specific-package:
+  #   compiler: [different-compiler-spec]
