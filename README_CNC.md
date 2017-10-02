@@ -73,6 +73,15 @@ $ tree -L 1 ~/.spackview
 `bin/`, manpages pod `man/` či `share/man/` atd.). Stačí tedy pak přidat tyto
 adresáře do cesty přes příslušné proměnné prostředí `*PATH`...
 
+Defaultně se vytvářejí symlinky, což mj. umožňuje, aby zdrojové soubory a view
+byly na jiných filesystémech. Pokud ale chceme do view nalinkovat i balíčky,
+které nějaké další balíčky rozšiřují (např. knihovnu `manatee` pro Python), a
+zároveň se chceme vyhnout tomu, abychom kvůli jejich zprovoznění museli
+manipulovat s příslušnými proměnnými prostředí (tj. např. pro Python upravit
+`PYTHONPATH`), musíme už použít hardlinky. Stačí nahradit příkaz `add` příkazem
+`hardlink`. Ovšem pozor, jak zmíněno výše, hardlinky nemůžou jít přes hranice
+fyzického filesystému.
+
 ```sh
 # v ~/.bashrc nebo podobném konfiguračním souboru
 export PATH=$HOME/.spackview/bin:$PATH
@@ -153,3 +162,13 @@ to zatím nevadilo, nicméně chytřejší řešení je snad na cestě:
 
 Většinou stačí zjistit hash pomocí `./bin/spack md5 <release_url>` a pak verzi
 přidat pomocí `./bin/spack edit <jméno_balíčku>`.
+
+## Jaké speciální funkce jsou dostupné při psaní balíčků?
+
+Viz dokumentace modulu
+[spack](http://spack.readthedocs.io/en/latest/spack.html#module-contents) (na
+začátku `package.py` vždycky je `from spack import *`).
+
+Kromě toho se hodí prozkoumat metody dostupné na příslušné třídě `*Package` a
+[`PackageBase`](http://spack.readthedocs.io/en/latest/spack.html#spack.package.PackageBase),
+z níž všechny třídy `*Package` dědí.
