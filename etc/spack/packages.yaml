@@ -1,5 +1,8 @@
 packages:
+  gcc:
+    # allow gcc to be compiled with whichever gcc is available
+    compiler: [gcc]
   all:
-    compiler: [gcc@6.4.0]
-  # specific-package:
-  #   compiler: [different-compiler-spec]
+    # but require a reasonably recent but not too recent gcc for all other
+    # packages
+    compiler: ["gcc@5:6.99"]
