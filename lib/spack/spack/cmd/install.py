@@ -26,6 +26,7 @@ import argparse
 import os
 import shutil
 import sys
+import textwrap as tw
 
 import llnl.util.filesystem as fs
 import llnl.util.tty as tty
@@ -244,6 +245,7 @@ def install(parser, args, **kwargs):
                 "only one spec is allowed when overwriting an installation"
 
             spec = specs[0]
+            check_compiler(spec)
             t = spack.store.db.query(spec)
             assert len(t) == 1, "to overwrite a spec you must install it first"
 
@@ -270,4 +272,20 @@ def install(parser, args, **kwargs):
 
         else:
             for spec in specs:
+                check_compiler(spec)
                 install_spec(args, kwargs, spec)
+
+
+def check_compiler(spec):
+    if spec.compiler.name == "gcc" and not spec.compiler.version.satisfies(spack.version.ver("5:6.99")):
+        sep = "=" * 72
+        msg = tw.fill(
+            "COMPILING WITH NON-RECOMMENDED GCC VERSION!\n"
+            "{}\n"
+            "You are about to compile with a version of GCC which is too "
+            "old or too recent ({}); consider first installing GCC 5.x "
+            "or 6.x for best compatibility."
+            "\n{}".format(sep, spec.compiler, sep, sep),
+            width=72
+        )
+        tty.warn(msg)
