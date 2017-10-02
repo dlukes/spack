@@ -198,8 +198,8 @@ class Python(AutotoolsPackage):
                 raise ValueError(
                     '+ucs4 variant not compatible with Python 3.3 and beyond')
 
-        if spec.satisfies('@3:'):
-            config_args.append('--without-ensurepip')
+        if spec.satisfies('@:2'):
+            config_args.append('--with-ensurepip')
 
         if '+pic' in spec:
             config_args.append('CFLAGS={0}'.format(self.compiler.pic_flag))
