@@ -1,0 +1,23 @@
+--- a/configure	2017-07-12 15:36:53.000000000 +0000
++++ b/configure	2017-10-02 09:02:05.469015083 +0000
+@@ -18264,17 +18264,9 @@
+ 	    PERL_CPPFLAGS="-I$PERL_INCLUDE_DIR"
+ 	fi
+ 
+-	# locate site directory for local modules
+-	case $prefix in
+-	NONE|/usr/local|/usr/local/)
+-		PERL_SITE_PKG=`$PERL -MConfig -e 'print "$Config{installsitearch}"'`
+-
+-		;;
+-	*)
+-		PERL_SITE_PKG=`$PERL -MConfig -e 'print "$Config{installvendorarch}"' | sed "s,/usr/,$prefix/,"`
+-
+-		;;
+-	esac
++	# install Manatee's Perl module inside Manatee's prefix (Spack Perl doesn't
++	# have installvendorarch configured, so use installsitearch)
++	PERL_SITE_PKG=`$PERL -MConfig -e 'print "$Config{installsitearch}"' | sed "s,.*\(lib/site_perl\),$prefix/\1,"`
+ 
+ 
+     saved_CPPFLAGS=$CPPFLAGS
