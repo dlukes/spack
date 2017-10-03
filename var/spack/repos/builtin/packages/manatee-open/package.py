@@ -28,7 +28,19 @@ from spack import *
 class ManateeOpen(AutotoolsPackage):
     """Manatee corpus management system and query engine.
 
-    Python and Perl extensions are installed into *Manatee's* prefix.
+    Python and Perl bindings are installed into *Manatee's* prefix. To symlink
+    them into Python's and Perl's prefixes, run the following:
+
+      $ spack python activate_manatee_bindings.py activate
+
+    To remove the symlinks, run:
+
+      $ spack python activate_manatee_bindings.py deactivate
+
+    ===========================================================================
+
+    If you can't use the above solution for some reason, here are some tips on
+    alternative ways to set things up.
 
     To use the Python module, either add the appropriate directory to your
     PYTHONPATH or create a hardlinked view:
@@ -62,9 +74,11 @@ class ManateeOpen(AutotoolsPackage):
     depends_on("finlib +pcre", when="+pcre")
     depends_on("finlib -pcre", when="-pcre")
     # always at least depends on python (sbangs must be patched)
-    depends_on("python@2.6:2.10", when="-python")
-    extends("python@2.6:2.10", when="+python")
-    extends("perl", when="+perl")
+    depends_on("python@2.6:2.99")
+    # TODO: activating multiple extendees currently doesn't work, see TODOs in
+    # spack.package
+    extends("python", when="+python", ignore=r"(bin|lib/(lib.*?|.*?perl.*?))/.*")
+    extends("perl", when="+perl", ignore=r"(bin|lib/(lib.*?|.*?python.*?))/.*")
 
     patch("configure.patch", when="+perl")
 

@@ -150,6 +150,22 @@ print("Hello, world!")
 print("Hello, world!")
 ```
 
+## Jak nainstalovat manatee?
+
+1. Naklonujte si tento repozitář.
+2. Zkontrolujte verzi GCC, kterou máte k dispozici. Není-li řady 5 nebo 6,
+   doporučuju nejdřív nainstalovat GCC 6.x: `bin/spack install gcc@6`
+3. Nainstalujte manatee: `bin/spack install manatee-open`
+4. Aktivujte knihovny pro Python a Perl:
+   `bin/spack python activate_manatee_bindings.py activate`
+
+Pokud budete chtít knihovny pro Python a Perl zase deaktivovat:
+`bin/spack python activate_manatee_bindings.py deactivate`.
+
+Pokud chcete knihovny pro Python a Perl používat nějakým jiným způsobem (bez
+aktivace), různé tipy jsou k dispozici v dokumentaci balíčku `manatee-open`:
+`bin/spack info manatee-open`.
+
 ## Jak řeší `spack view` konflikty a nekompatibility mezi balíčky?
 
 Neřeší, prostě jen tupě nalinkuje zadané balíčky do adresářové struktury pod
