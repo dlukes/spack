@@ -188,3 +188,8 @@ začátku `package.py` vždycky je `from spack import *`).
 Kromě toho se hodí prozkoumat metody dostupné na příslušné třídě `*Package` a
 [`PackageBase`](http://spack.readthedocs.io/en/latest/spack.html#spack.package.PackageBase),
 z níž všechny třídy `*Package` dědí.
+
+## Jak debugovat instalaci balíčku?
+
+`bin/spack env <jméno_balíčku> bash` nastaví všechny potřebné proměnné prostředí
+a otevře `bash`.
