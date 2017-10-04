@@ -154,7 +154,13 @@ print("Hello, world!")
 
 1. Naklonujte si tento repozitář.
 2. Zkontrolujte verzi GCC, kterou máte k dispozici. Není-li řady 5 nebo 6,
-   doporučuju nejdřív nainstalovat GCC 6.x: `bin/spack install gcc@6`
+   doporučuju nejdřív nainstalovat co nejnovější GCC 6:
+   1. pomocí `bin/spack info gcc` identifikujte nejnovější verzi GCC 6, která
+      je k dispozici
+   2. `bin/spack install gcc@6.x.y`, kde `x.y` vyvodíte z předchozího kroku
+   3. `bin/spack find -p gcc`, čímž zjistíte cestu k prefixu, kam se GCC
+       nainstaloval
+   4. `bin/spack compiler find cesta/k/prefixu/gcc`
 3. Nainstalujte manatee: `bin/spack install manatee-open`
 4. Aktivujte knihovny pro Python a Perl:
    `bin/spack python activate_manatee_bindings.py activate`
