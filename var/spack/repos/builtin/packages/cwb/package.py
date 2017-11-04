@@ -38,7 +38,7 @@ class Cwb(Package):
 
     version("daily", svn=url)
 
-    depends_on("binutils", type="build")
+    depends_on("binutils", type="build", when="%gcc")
     depends_on("bison", type="build")
     depends_on("flex", type="build")
     depends_on("pkg-config", type="build")
@@ -46,7 +46,10 @@ class Cwb(Package):
     depends_on("pcre")
     depends_on("glib")
     depends_on("readline")
+    depends_on("gettext")
     depends_on("perl", type="build")
+
+    patch("config.patch")
 
     def install(self, spec, prefix):
         p = architecture.platform()
@@ -58,9 +61,9 @@ class Cwb(Package):
         # CWB distribution under config/
         cppflags = []
         ldflags = ["-lm"]
-        for dep in ["ncurses", "pcre", "glib", "readline"]:
-            cppflags.append("-I{}/include".format(spec[dep].prefix))
-            ldflags.append("-L{0}/lib -Wl,-rpath,{0}/lib".format(spec[dep].prefix))
+        for dep in spec.dependencies("link"):
+            cppflags.append("-I{}/include".format(dep.prefix))
+            ldflags.append("-L{0}/lib -Wl,-rpath,{0}/lib".format(dep.prefix))
         cppflags = "CPPFLAGS=" + " ".join(cppflags)
         ldflags = "LDFLAGS=" + " ".join(ldflags)
         make("clean", platform, prefix, cppflags, ldflags)
