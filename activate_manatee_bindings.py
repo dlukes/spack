@@ -13,7 +13,7 @@ import sys
 
 
 def die_usage():
-    print(__doc__.strip())
+    print(__doc__.strip(), file=sys.stderr)
     sys.exit(1)
 
 
