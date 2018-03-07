@@ -37,11 +37,13 @@ class Ffmpeg(AutotoolsPackage):
     variant('shared', default=True,
             description='build shared libraries')
 
+    depends_on('lame')
+    depends_on('libvorbis')
     depends_on('yasm@1.2.0:')
 
     def configure_args(self):
         spec = self.spec
-        config_args = ['--enable-pic']
+        config_args = ['--enable-pic', '--enable-libmp3lame', '--enable-libvorbis']
 
         if '+shared' in spec:
             config_args.append('--enable-shared')
