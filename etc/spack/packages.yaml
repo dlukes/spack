@@ -1,4 +1,4 @@
 packages:
   all:
     # prefer a reasonably recent but not too recent gcc
-    compiler: ["gcc@6:6.99", "gcc@5:5.99"]
+    compiler: ["gcc@6:6.99", "gcc@5:5.99", "gcc@7:"]
