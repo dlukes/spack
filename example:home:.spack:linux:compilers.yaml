@@ -1,0 +1,27 @@
+compilers:
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: ubuntu12.04
+    paths:
+      cc: /usr/bin/gcc
+      cxx: /usr/bin/g++
+      f77: null
+      fc: null
+    spec: gcc@4.6
+    target: x86_64
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: ubuntu12.04
+    paths:
+      cc: /cnk/common/tools/spack/opt/spack/linux-ubuntu12.04-x86_64/gcc-4.6/gcc-6.4.0-d5mm6rkdfengo6kfcoctcpx6hhnrecjf/bin/gcc
+      cxx: /cnk/common/tools/spack/opt/spack/linux-ubuntu12.04-x86_64/gcc-4.6/gcc-6.4.0-d5mm6rkdfengo6kfcoctcpx6hhnrecjf/bin/g++
+      f77: /cnk/common/tools/spack/opt/spack/linux-ubuntu12.04-x86_64/gcc-4.6/gcc-6.4.0-d5mm6rkdfengo6kfcoctcpx6hhnrecjf/bin/gfortran
+      fc: /cnk/common/tools/spack/opt/spack/linux-ubuntu12.04-x86_64/gcc-4.6/gcc-6.4.0-d5mm6rkdfengo6kfcoctcpx6hhnrecjf/bin/gfortran
+    spec: gcc@6.4.0
+    target: x86_64
